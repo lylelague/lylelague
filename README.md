@@ -112,7 +112,7 @@ EXIT STATUS
 
 #### `lyle@ai2aim:~$ ls ~/.trophies`
 
-<img alt="Trophies" src="https://github-profile-trophy.vercel.app/?username=lylelague&theme=onedark&no-frame=true&no-bg=true&margin-w=4&column=7&title=Commits,Followers,Repositories,Stars,PullRequest,Issues,Reviews" />
+<img alt="Trophies" src="https://github-trophies-rk063lqz3-lucthienphong1120.vercel.app/?username=lylelague&theme=tokyonight&no-frame=true&column=7&margin-w=4&title=Commits,Followers,Repositories,Stars,PullRequest,Issues,Reviews" />
 
 #### `lyle@ai2aim:~$ history --graph`
 
