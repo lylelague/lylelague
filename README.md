@@ -102,8 +102,8 @@ EXIT STATUS
 #### `lyle@ai2aim:~$ gh api /me/stats`
 
 <p>
-  <img height="170" alt="Lyle's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=lylelague&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&rank_icon=github&bg_color=0d1117&title_color=3fb950&text_color=c9d1d9&icon_color=3fb950" />
-  <img height="170" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=lylelague&layout=compact&hide_border=true&langs_count=8&bg_color=0d1117&title_color=3fb950&text_color=c9d1d9" />
+  <img height="170" alt="Lyle's GitHub stats" src="https://github-stats-extended.vercel.app/api?username=lylelague&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&rank_icon=github&bg_color=0d1117&title_color=3fb950&text_color=c9d1d9&icon_color=3fb950" />
+  <img height="170" alt="Top languages" src="https://github-stats-extended.vercel.app/api/top-langs?username=lylelague&layout=compact&langs_count=8&hide_values=true&hide_border=true&bg_color=0d1117&title_color=3fb950&text_color=c9d1d9" />
 </p>
 
 #### `lyle@ai2aim:~$ streak --current`
