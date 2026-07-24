@@ -14,7 +14,7 @@
   ============================================================================
 -->
 
-![Lyle Lague — Full-Stack Developer @ Ai2Aim](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=1000&color=3FB950&vCenter=true&width=680&height=46&lines=Full-Stack+Engineer+%40+Ai2Aim;I+build+the+APIs+and+the+UIs+that+consume+them;TypeScript+all+the+way+down;AI-augmented+developer)
+![Lyle Lague — Full-Stack Developer @ Ai2Aim](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=1000&color=3FB950&vCenter=true&width=680&height=46&lines=Full-Stack+Developer+%40+Ai2Aim;I+build+the+APIs+and+the+UIs+that+consume+them;TypeScript+all+the+way+down;AI-augmented+developer)
 
 [![GitHub](https://img.shields.io/badge/lylelague-238636?style=flat-square&logo=github&logoColor=white)](https://github.com/lylelague)
 [![Email](https://img.shields.io/badge/lyle.lague@ai2aim.ai-238636?style=flat-square&logo=gmail&logoColor=white)](mailto:lyle.lague@ai2aim.ai)
