@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340" fill="none" role="img" aria-label="Lyle Lague — Full-Stack Developer">
+  <defs>
+    <linearGradient id="aurora" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#34d399"/>
+      <stop offset="0.33" stop-color="#22d3ee"/>
+      <stop offset="0.66" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#34d399" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g3" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#6366f1" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="42"/></filter>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="frame"><rect width="1200" height="340" rx="22"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="340" fill="#060a13"/>
+
+    <!-- drifting aurora ribbons -->
+    <g filter="url(#soft)">
+      <ellipse cx="300" cy="115" rx="270" ry="150" fill="url(#g1)">
+        <animateTransform attributeName="transform" type="translate" values="0 0; 70 34; 0 0" dur="13s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.65;1;0.65" dur="8s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="640" cy="80" rx="320" ry="150" fill="url(#g2)">
+        <animateTransform attributeName="transform" type="translate" values="0 0; -55 44; 0 0" dur="15s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.55;0.95;0.55" dur="10s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="960" cy="120" rx="300" ry="150" fill="url(#g3)">
+        <animateTransform attributeName="transform" type="translate" values="0 0; 46 -30; 0 0" dur="17s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.55;0.9;0.55" dur="9s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+
+    <!-- twinkling starfield -->
+    <g fill="#e2e8f0">
+      <circle cx="90" cy="52" r="1.4"><animate attributeName="opacity" values="0.15;1;0.15" dur="3.1s" begin="0s" repeatCount="indefinite"/></circle>
+      <circle cx="180" cy="270" r="1.6"><animate attributeName="opacity" values="0.2;0.9;0.2" dur="4.2s" begin="0.6s" repeatCount="indefinite"/></circle>
+      <circle cx="250" cy="40" r="1.1"><animate attributeName="opacity" values="0.1;0.8;0.1" dur="2.6s" begin="1.1s" repeatCount="indefinite"/></circle>
+      <circle cx="410" cy="292" r="1.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.7s" begin="0.3s" repeatCount="indefinite"/></circle>
+      <circle cx="520" cy="46" r="1.2"><animate attributeName="opacity" values="0.15;0.85;0.15" dur="4.8s" begin="1.5s" repeatCount="indefinite"/></circle>
+      <circle cx="700" cy="286" r="1.3"><animate attributeName="opacity" values="0.2;0.95;0.2" dur="3.3s" begin="0.9s" repeatCount="indefinite"/></circle>
+      <circle cx="815" cy="52" r="1.5"><animate attributeName="opacity" values="0.15;1;0.15" dur="4.1s" begin="0.2s" repeatCount="indefinite"/></circle>
+      <circle cx="905" cy="278" r="1.2"><animate attributeName="opacity" values="0.1;0.85;0.1" dur="2.9s" begin="1.7s" repeatCount="indefinite"/></circle>
+      <circle cx="1010" cy="60" r="1.4"><animate attributeName="opacity" values="0.2;0.95;0.2" dur="3.6s" begin="0.5s" repeatCount="indefinite"/></circle>
+      <circle cx="1110" cy="250" r="1.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.4s" begin="1.2s" repeatCount="indefinite"/></circle>
+      <circle cx="140" cy="150" r="1.0"><animate attributeName="opacity" values="0.1;0.7;0.1" dur="3.9s" begin="2.1s" repeatCount="indefinite"/></circle>
+      <circle cx="1070" cy="150" r="1.0"><animate attributeName="opacity" values="0.1;0.7;0.1" dur="3.2s" begin="0.8s" repeatCount="indefinite"/></circle>
+      <circle cx="360" cy="70" r="1.0"><animate attributeName="opacity" values="0.1;0.75;0.1" dur="4.6s" begin="1.9s" repeatCount="indefinite"/></circle>
+      <circle cx="640" cy="300" r="1.1"><animate attributeName="opacity" values="0.15;0.8;0.15" dur="3.5s" begin="0.4s" repeatCount="indefinite"/></circle>
+    </g>
+
+    <!-- wordmark -->
+    <text x="600" y="182" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="5" fill="url(#aurora)" filter="url(#glow)">LYLE LAGUE</text>
+
+    <!-- tagline -->
+    <text x="600" y="228" text-anchor="middle" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="18.5" font-weight="500" letter-spacing="6.5" fill="#9fb3c8">FULL-STACK DEVELOPER &#183; SHIPS WITH AI, THEN BREAKS IT WITH EVALS</text>
+
+    <!-- animated underline -->
+    <rect y="250" height="3" rx="1.5" fill="url(#aurora)">
+      <animate attributeName="x" values="600;468;600" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="width" values="0;264;0" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="7s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>
