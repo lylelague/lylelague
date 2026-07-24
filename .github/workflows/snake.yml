@@ -1,0 +1,47 @@
+# =============================================================================
+#  Contribution-snake generator  ·  for github.com/lylelague/lylelague
+# -----------------------------------------------------------------------------
+#  SETUP (one time):
+#    1. In your PROFILE repo (lylelague/lylelague), create: .github/workflows/
+#    2. Copy this file there and rename it to  snake.yml
+#    3. Commit + push to main.
+#    4. Repo → Actions tab → "Generate Snake" → "Run workflow" (first run).
+#       (After that it self-runs every 12h and on each push to main.)
+#    5. It publishes the SVGs to an "output" branch, which the README reads.
+#
+#  Palette is matched to the profile: snake #3fb950, cells graded GitHub-green.
+#  No secrets needed — the built-in GITHUB_TOKEN has enough scope.
+# =============================================================================
+name: Generate Snake
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"   # every 12 hours
+  workflow_dispatch:          # manual "Run workflow" button
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Generate snake SVGs
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=#3fb950&color_dots=#161b22,#0e4429,#26a641,#39d353
+            dist/github-contribution-grid-snake.svg?palette=github-light&color_snake=#238636
+
+      - name: Publish to output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
