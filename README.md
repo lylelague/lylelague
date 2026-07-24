@@ -107,7 +107,7 @@ RANK ............. 600K+ line codebase cleared, LSP-backed — not grep
 
 <img alt="Contribution streak" src="https://streak-stats.demolab.com?user=lylelague&hide_border=true&background=241734&stroke=b967ff&ring=ff2e97&fire=ff2e97&currStreakNum=f5e6ff&currStreakLabel=05d9e8&sideNums=f5e6ff&sideLabels=b967ff&dates=b967ff&excludeDaysLabel=b967ff" />
 
-<img alt="Trophies" src="https://github-trophies-rk063lqz3-lucthienphong1120.vercel.app/?username=lylelague&theme=radical&no-frame=true&column=7&margin-w=4&title=Commits,Followers,Repositories,Stars,PullRequest,Issues,Reviews" />
+<p align="center"><img alt="Trophies" src="https://github-trophies-rk063lqz3-lucthienphong1120.vercel.app/?username=lylelague&theme=radical&no-frame=true&column=7&margin-w=4&title=Commits,Followers,Repositories,Stars,PullRequest,Issues,Reviews" /></p>
 
 <img alt="Contribution activity graph" src="https://github-readme-activity-graph.vercel.app/graph?username=lylelague&bg_color=241734&color=05d9e8&line=ff2e97&point=f5e6ff&area=true&hide_border=true" />
 
