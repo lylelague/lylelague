@@ -24,7 +24,7 @@
 #### `lyle@ai2aim:~$ whoami`
 
 ```
-Lyle Lague — Full-Stack Engineer @ Ai2Aim
+Lyle Lague — Full-Stack Developer @ Ai2Aim
 
   ›  backend    building the API — TypeScript, Express, Sequelize, PostgreSQL
   ›  frontend   shipping the React app that consumes it
