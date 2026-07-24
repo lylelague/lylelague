@@ -10,10 +10,13 @@
   Snake     : the ONLY widget needing a workflow. Drop snake.yml into
               .github/workflows/ of this repo (see instructions in that file).
               Until the Action runs once, the snake image will 404 — expected.
+  Edit later: LinkedIn / X already filled. Trim tech badges freely. The
+              now.log, man, and projects sections are plain markdown — edit
+              any time.
   ============================================================================
 -->
 
-![Lyle Lague — Full-Stack Developer @ Ai2Aim](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=1000&color=3FB950&vCenter=true&width=680&height=46&lines=Full-Stack+Developer+%40+Ai2Aim;Enterprise+software+without+the+ceremony;One+engineer%2C+both+ends+of+the+request;AI-assisted.+Production-minded.;Build.+Measure.+Refine.)
+![Lyle Lague — Full-Stack Developer @ Ai2Aim](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=1000&color=3FB950&vCenter=true&width=680&height=46&lines=Full-Stack+Developer+%40+Ai2Aim;One+engineer%2C+both+ends+of+the+request;TypeScript+all+the+way+down;Offline-first+Flutter+for+the+field;Ships+with+AI.+Writes+the+evals+that+break+it)
 
 [![GitHub](https://img.shields.io/badge/lylelague-238636?style=flat-square&logo=github&logoColor=white)](https://github.com/lylelague)
 [![Email](https://img.shields.io/badge/lyle.lague@ai2aim.ai-238636?style=flat-square&logo=gmail&logoColor=white)](mailto:lyle.lague@ai2aim.ai)
@@ -22,17 +25,15 @@
 
 #### `lyle@ai2aim:~$ whoami`
 
-```text
+```
 Lyle Lague — Full-Stack Developer @ Ai2Aim
+remote from Iloilo, Philippines (UTC+8) · building enterprise HR software for a Canada-based SaaS
 
-remote from Iloilo, Philippines (UTC+8)
-
-I work across the entire request path: backend APIs, frontend applications,
-mobile clients, infrastructure, and the AI systems around them. Most days
-alternate between shipping enterprise HR software, improving developer
-workflows, and writing evaluation scenarios designed to expose where LLMs fail.
-
-I prefer systems that stay understandable after the tenth feature—not just the first.
+  ›  backend    TypeScript, Express, Sequelize, PostgreSQL on AWS — multi-tenant
+  ›  frontend   the React 19 app that consumes it — same engineer, both ends of the request
+  ›  mobile     Flutter for the field — GPS, geofencing, maps, offline-first sync
+  ›  ai         Claude Code as daily driver; Anthropic, OpenAI & Google SDKs in production
+  ›  scale      a 600K+ line codebase, navigated with LSP-backed tooling — not grep
 ```
 
 #### `lyle@ai2aim:~$ cat stack.txt`
@@ -54,12 +55,6 @@ I prefer systems that stay understandable after the tenth feature—not just the
 ![Dart](https://img.shields.io/badge/Dart-161b22?style=flat-square&logo=dart&logoColor=3fb950)
 ![Supabase](https://img.shields.io/badge/Supabase-161b22?style=flat-square&logo=supabase&logoColor=3fb950)
 
-**› cloud & infra** &nbsp;
-![Docker](https://img.shields.io/badge/Docker-161b22?style=flat-square&logo=docker&logoColor=3fb950)
-![Redis](https://img.shields.io/badge/Redis-161b22?style=flat-square&logo=redis&logoColor=3fb950)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-161b22?style=flat-square&logo=kubernetes&logoColor=3fb950)
-![AWS](https://img.shields.io/badge/AWS-161b22?style=flat-square&logo=amazonwebservices&logoColor=3fb950)
-
 **› ai** &nbsp;
 ![Anthropic SDK](https://img.shields.io/badge/Anthropic_SDK-161b22?style=flat-square&logo=anthropic&logoColor=3fb950)
 ![OpenAI SDK](https://img.shields.io/badge/OpenAI_SDK-161b22?style=flat-square&logo=openai&logoColor=3fb950)
@@ -68,12 +63,11 @@ I prefer systems that stay understandable after the tenth feature—not just the
 **› tooling** &nbsp;
 ![Git](https://img.shields.io/badge/Git-161b22?style=flat-square&logo=git&logoColor=3fb950)
 ![Jest](https://img.shields.io/badge/Jest-161b22?style=flat-square&logo=jest&logoColor=3fb950)
-![Playwright](https://img.shields.io/badge/Playwright-161b22?style=flat-square&logo=playwright&logoColor=3fb950)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-161b22?style=flat-square&logo=anthropic&logoColor=3fb950)
 
 #### `lyle@ai2aim:~$ ls -l ~/projects`
 
-```text
+```
 field-ops-app/      Flutter · Supabase · OR-Tools    role-aware GPS + geofencing, offline-first, route optimization
 fleet-tracker/      Flutter · Vue · Supabase         real-time fleet monitoring — foreground GPS + trip analytics
 sports-meet-web/    Next.js · Supabase · shadcn      regional sports meet platform — schedules, results, medal tally
@@ -82,39 +76,15 @@ gov-notify-rail/    concept · eGovPH hackathon       proactive notification rai
 
 #### `lyle@ai2aim:~$ tail -f now.log`
 
-```text
-[work]     enterprise HR platform development across backend, frontend and mobile
-[agents]   Claude Code + MCP servers (Serena, LSP-backed) for long-running engineering workflows
-[evals]    adversarial reasoning benchmarks designed to break assumptions instead of confirm them
-[audits]   Playwright-driven responsiveness and production security reviews
-[focus]    reducing friction—for users, teammates and future maintainers
 ```
-
-#### `lyle@ai2aim:~$ pwd`
-
-```text
-/currently
-
-• Building production software with TypeScript, React and Flutter
-• Integrating AI into developer and product workflows
-• Improving evaluation quality for reasoning-focused language models
-• Learning enough infrastructure to comfortably own deployments end-to-end
-```
-
-#### `lyle@ai2aim:~$ grep -A6 principles ~/.config/engineering`
-
-```text
-- Prefer boring, maintainable solutions over clever ones.
-- Read the code before changing the code.
-- Keep commits focused and reviews easy to reason about.
-- Optimize for the engineer maintaining this six months from now.
-- If an assumption matters, verify it.
-- Copy-paste-ready beats almost-ready.
+[agents]   Claude Code + MCP servers (Serena, LSP-backed) — long autonomous runs, decision logs over hand-holding
+[evals]    authoring adversarial reasoning benchmarks — false premises, intuition traps, counterfactuals — built to make LLMs fail
+[audits]   Playwright-run mobile-responsiveness sweeps and security passes on production frontends
 ```
 
 #### `lyle@ai2aim:~$ man lyle`
 
-```text
+```
 NAME
     lyle — full-stack engineer, remote, UTC+8
 
@@ -122,15 +92,11 @@ SYNOPSIS
     lyle [--direct] [--async]
 
 DESCRIPTION
-    Comfortable moving between product features, developer tooling,
-    infrastructure and AI-assisted workflows.
-
-    Prefers precision over volume, concise communication over meetings,
-    and systems that are easier to operate than explain.
+    Says it once, plainly. Disagreement gets flagged early — then commits.
+    Prefers one dense paragraph to three padded ones. Ships copy-paste-ready.
 
 EXIT STATUS
-    Returns 0 on merge.
-    Usually leaves the branch smaller than it found it.
+    Returns 0 on merge. Leaves the branch cleaner than it was checked out.
 ```
 
 #### `lyle@ai2aim:~$ gh api /me/stats`
@@ -160,12 +126,9 @@ EXIT STATUS
   <img alt="Contribution snake eating the commit graph" src="https://raw.githubusercontent.com/lylelague/lylelague/output/github-contribution-grid-snake-dark.svg" />
 </picture>
 
-```text
+```
 lyle@ai2aim:~$ exit
 logout
 Connection to ai2aim closed.
-
-# still reachable:
-#   github.com/lylelague
-#   lyle.lague@ai2aim.ai
+// the inbox stays open — lyle.lague@ai2aim.ai
 ```
