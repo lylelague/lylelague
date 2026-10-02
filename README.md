@@ -13,6 +13,8 @@
   Snake     : github-snake-dracula.svg on the `output` branch.
   Activity  : github-activity-graph-dracula.svg on the `output` branch.
   Top langs : profile/top-langs.svg, committed by grs.yml (incl. private repos).
+  PR card   : card_width=307 + line_height=34 make it 307x181, the donut's 1.70
+              aspect, so the two share a row evenly.
   ============================================================================
 -->
 
@@ -73,7 +75,7 @@ const lyle: FullStackDeveloper = {
 <img height="165" alt="Streak" src="https://streak-stats.demolab.com?user=lylelague&theme=dracula&hide_border=true" />
 
 <img width="49%" alt="Top languages used" src="./profile/top-langs.svg" />
-<img width="49%" alt="Most-used language" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=lylelague&theme=dracula" />
+<img width="49%" alt="Pull requests" src="https://github-stats-extended.vercel.app/api?username=lylelague&hide=stars,commits,prs,issues,contribs&show=prs_authored,prs_merged,prs_merged_percentage&show_icons=true&hide_rank=true&card_width=307&line_height=34&theme=dracula&hide_border=true&custom_title=Pull%20Requests" />
 
 <img width="49%" alt="Productive time" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=lylelague&theme=dracula&utcOffset=8" />
 <img width="49%" alt="Stats summary" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=lylelague&theme=dracula" />
