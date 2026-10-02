@@ -1,18 +1,23 @@
 # =============================================================================
-#  Contribution-snake generator  ·  for github.com/lylelague/lylelague
+#  Contribution-snake + activity-graph generator  ·  for github.com/lylelague/lylelague
 # -----------------------------------------------------------------------------
 #  SETUP (one time):
 #    1. In your PROFILE repo (lylelague/lylelague), create: .github/workflows/
 #    2. Copy this file there and rename it to  snake.yml
 #    3. Commit + push to main.
-#    4. Repo → Actions tab → "Generate Snake" → "Run workflow" (first run).
+#    4. Repo → Actions tab → "Generate Snake & Activity Graph" → "Run workflow".
 #       (After that it self-runs every 12h and on each push to main.)
 #    5. It publishes the SVGs to an "output" branch, which the README reads.
 #
 #  Palette is matched to the profile: snake #3fb950, cells graded GitHub-green.
 #  No secrets needed — the built-in GITHUB_TOKEN has enough scope.
+#
+#  The publish step REPLACES the whole output branch on every run, and scheduled
+#  runs always use main's copy of this file. So every SVG a README reads from
+#  output must be generated here, on main — and no other workflow may publish
+#  to output, or the two will keep deleting each other's files.
 # =============================================================================
-name: Generate Snake
+name: Generate Snake & Activity Graph
 
 on:
   schedule:
@@ -30,6 +35,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      # Replaces github-readme-activity-graph.vercel.app (disabled, HTTP 402).
+      # Runs before snk on purpose: snk is a Docker action, so the dist/ it
+      # creates is root-owned and this non-root step could not write into it.
+      # Pinned by SHA: small third-party action running with contents: write.
+      - name: Generate activity graph SVG
+        uses: maurodesouza/github-readme-activity-graph-action@6411849745757299611a795fef822a31ca8d1d02 # v1.0.0
+        with:
+          username: ${{ github.repository_owner }}
+          options: theme=dracula&hide_border=true&area=true
+          output_path: dist/github-activity-graph-dracula.svg
+
       - name: Generate snake SVGs
         uses: Platane/snk@v3
         with:
@@ -37,6 +53,11 @@ jobs:
           outputs: |
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=#3fb950&color_dots=#161b22,#0e4429,#26a641,#39d353
             dist/github-contribution-grid-snake.svg?palette=github-light&color_snake=#238636
+            dist/github-snake-synthwave.svg?palette=github-dark&color_snake=#ff2e97&color_dots=#241734,#5a2a7a,#8b2fb0,#b967ff,#05d9e8
+            dist/github-snake-blueprint.svg?palette=github-dark&color_snake=#58a6ff&color_dots=#0d2137,#1b3a5c,#2d6ca8,#58a6ff,#a8d5ff
+            dist/github-snake-dev.svg?palette=github-dark&color_snake=#a371f7&color_dots=#0d1117,#3a2456,#6e40c9,#a371f7,#d2a8ff
+            dist/github-snake-aurora.svg?palette=github-dark&color_snake=#34d399&color_dots=#0d1424,#134e4a,#0f766e,#22d3ee,#6366f1
+            dist/github-snake-dracula.svg?palette=github-dark&color_snake=#bd93f9&color_dots=#282a36,#44475a,#6272a4,#bd93f9,#ff79c6
 
       - name: Publish to output branch
         uses: crazy-max/ghaction-github-pages@v4
