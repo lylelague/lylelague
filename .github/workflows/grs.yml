@@ -23,6 +23,28 @@ jobs:
           path: profile/stats.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # Every repo with code on this account is private, so a GITHUB_TOKEN card
+      # would render empty. STATS_TOKEN: fine-grained PAT, resource owner
+      # lylelague, All repositories, Metadata read-only.
+      - name: Require STATS_TOKEN
+        env:
+          STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
+        run: |
+          if [ -z "$STATS_TOKEN" ]; then
+            echo "::error title=STATS_TOKEN not set::Add a fine-grained PAT (All repositories, Metadata read-only) as the STATS_TOKEN repo secret so the top-languages card can read private repos."
+            exit 1
+          fi
+
+      # card_width=315 makes the donut 365x215: the same 1.7 aspect as the
+      # summary cards it sits beside in the README.
+      - name: Generate top languages card (includes private repos)
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: top-langs
+          options: username=${{ github.repository_owner }}&layout=donut&langs_count=5&card_width=315&theme=dracula&hide_border=true&custom_title=Top%20Languages%20Used
+          path: profile/top-langs.svg
+          token: ${{ secrets.STATS_TOKEN }}
+
       - name: Commit cards
         run: |
           git config user.name "github-actions[bot]"

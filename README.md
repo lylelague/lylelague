@@ -12,6 +12,7 @@
               cyan #8be9fd · green #50fa7b · fg #f8f8f2
   Snake     : github-snake-dracula.svg on the `output` branch.
   Activity  : github-activity-graph-dracula.svg on the `output` branch.
+  Top langs : profile/top-langs.svg, committed by grs.yml (incl. private repos).
   ============================================================================
 -->
 
@@ -71,7 +72,7 @@ const lyle: FullStackDeveloper = {
 <img height="165" alt="GitHub stats" src="https://github-stats-extended.vercel.app/api?username=lylelague&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&rank_icon=github&theme=dracula" />
 <img height="165" alt="Streak" src="https://streak-stats.demolab.com?user=lylelague&theme=dracula&hide_border=true" />
 
-<img width="49%" alt="Repos per language" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=lylelague&theme=dracula" />
+<img width="49%" alt="Top languages used" src="./profile/top-langs.svg" />
 <img width="49%" alt="Most-used language" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=lylelague&theme=dracula" />
 
 <img width="49%" alt="Productive time" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=lylelague&theme=dracula&utcOffset=8" />
