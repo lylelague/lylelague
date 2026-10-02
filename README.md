@@ -18,7 +18,7 @@
 
 <div align="center">
 
-<img alt="Lyle Lague" src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1000&color=BD93F9&center=true&vCenter=true&width=780&height=48&lines=Kumusta!+I'm+Lyle+Lague;Full-Stack+Developer+%40+Ai2Aim;APIs%2C+apps%2C+and+Flutter+clients+in+the+field;Ships+with+AI+%E2%80%94+then+writes+the+evals+that+break+it" />
+<img alt="Lyle Lague" src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1000&color=BD93F9&center=true&vCenter=true&width=780&height=48&lines=Kumusta!+I'm+Lyle+Lague;Full-Stack+Developer+%40+AI2Aim;APIs%2C+apps%2C+and+Flutter+clients+in+the+field;Ships+with+AI+%E2%80%94+then+writes+the+evals+that+break+it" />
 
 <br>
 
@@ -32,7 +32,7 @@
 </div>
 
 > [!NOTE]
-> Full-stack developer at **Ai2Aim**, remote from **Iloilo, Philippines (UTC+8)**. I ship a Canada-based enterprise HR platform across every layer — backend, the React app that consumes it, and Flutter clients for the field — on a 600K+ line codebase, AI-assisted end to end.
+> Full-stack developer at **AI2Aim**, remote from **Iloilo, Philippines (UTC+8)**. I ship a Canada-based enterprise HR platform across every layer — backend, the React app that consumes it, and Flutter clients for the field — on a 600K+ line codebase, AI-assisted end to end.
 
 > [!TIP]
 > Best way to work with me: say it once, plainly. I flag disagreement early, then commit — and leave the branch cleaner than I found it.
@@ -50,7 +50,7 @@
 ```ts
 const lyle: FullStackDeveloper = {
   name: "Lyle Lague",
-  role: "Full-Stack Developer @ Ai2Aim",
+  role: "Full-Stack Developer @ AI2Aim",
   location: "Iloilo, PH",                 // UTC+8 · remote
   writes: ["TypeScript", "Dart", "SQL"],
   stack: {
