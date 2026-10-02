@@ -11,6 +11,7 @@
   Theme     : Dracula — bg #282a36 · purple #bd93f9 · pink #ff79c6 ·
               cyan #8be9fd · green #50fa7b · fg #f8f8f2
   Snake     : github-snake-dracula.svg on the `output` branch.
+  Activity  : github-activity-graph-dracula.svg on the `output` branch.
   ============================================================================
 -->
 
@@ -76,7 +77,7 @@ const lyle: FullStackDeveloper = {
 <img width="49%" alt="Productive time" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=lylelague&theme=dracula&utcOffset=8" />
 <img width="49%" alt="Stats summary" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=lylelague&theme=dracula" />
 
-<img alt="Activity graph" src="https://github-readme-activity-graph.vercel.app/graph?username=lylelague&theme=dracula&hide_border=true&area=true" />
+<img alt="Activity graph" src="https://raw.githubusercontent.com/lylelague/lylelague/output/github-activity-graph-dracula.svg" />
 
 </div>
 
