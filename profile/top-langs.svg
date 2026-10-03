@@ -134,35 +134,35 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#4F5D95" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        PHP 41.23%
+        PHP 40.34%
       </text>
     </g>
   </g><g transform="translate(0, 32)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#f1e05a" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        JavaScript 26.99%
+        JavaScript 26.42%
       </text>
     </g>
   </g><g transform="translate(0, 64)">
     <g class="stagger" style="animation-delay: 750ms">
       <circle cx="5" cy="6" r="5" fill="#3178c6" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        TypeScript 19.59%
+        TypeScript 21.07%
       </text>
     </g>
   </g><g transform="translate(0, 96)">
     <g class="stagger" style="animation-delay: 900ms">
       <circle cx="5" cy="6" r="5" fill="#3572A5" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        Python 8.32%
+        Python 8.14%
       </text>
     </g>
   </g><g transform="translate(0, 128)">
     <g class="stagger" style="animation-delay: 1050ms">
-      <circle cx="5" cy="6" r="5" fill="#336790" />
+      <circle cx="5" cy="6" r="5" fill="#663399" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        PLpgSQL 3.88%
+        CSS 4.03%
       </text>
     </g>
   </g>
@@ -173,8 +173,8 @@
        <g class="stagger" style="animation-delay: 600ms">
         <path
           data-testid="lang-donut"
-          size="41.23"
-          d="M 153.9534593521701 174.20561218198037 A 61.66666666666667 61.66666666666667 0 0 0 121.66666666666667 60"
+          size="40.34"
+          d="M 156.83945591938615 172.3189388167051 A 61.66666666666667 61.66666666666667 0 0 0 121.66666666666667 60"
           stroke="#4F5D95"
           fill="none"
           stroke-width="12">
@@ -184,8 +184,8 @@
        <g class="stagger" style="animation-delay: 700ms">
         <path
           data-testid="lang-donut"
-          size="26.99"
-          d="M 65.51139841370795 147.1492808421398 A 61.66666666666667 61.66666666666667 0 0 0 153.9534593521701 174.20561218198037"
+          size="26.42"
+          d="M 68.0818699894761 152.18628892582848 A 61.66666666666667 61.66666666666667 0 0 0 156.83945591938615 172.3189388167051"
           stroke="#f1e05a"
           fill="none"
           stroke-width="12">
@@ -195,8 +195,8 @@
        <g class="stagger" style="animation-delay: 800ms">
         <path
           data-testid="lang-donut"
-          size="19.59"
-          d="M 78.91929723288143 77.22074239605146 A 61.66666666666667 61.66666666666667 0 0 0 65.51139841370795 147.1492808421398"
+          size="21.07"
+          d="M 78.9751833658155 77.16705957457066 A 61.66666666666667 61.66666666666667 0 0 0 68.0818699894761 152.18628892582848"
           stroke="#3178c6"
           fill="none"
           stroke-width="12">
@@ -206,8 +206,8 @@
        <g class="stagger" style="animation-delay: 900ms">
         <path
           data-testid="lang-donut"
-          size="8.32"
-          d="M 106.81917375398733 61.814100038445 A 61.66666666666667 61.66666666666667 0 0 0 78.91929723288143 77.22074239605146"
+          size="8.14"
+          d="M 106.21823053428429 61.96638526999752 A 61.66666666666667 61.66666666666667 0 0 0 78.9751833658155 77.16705957457066"
           stroke="#3572A5"
           fill="none"
           stroke-width="12">
@@ -217,9 +217,9 @@
        <g class="stagger" style="animation-delay: 1000ms">
         <path
           data-testid="lang-donut"
-          size="3.88"
-          d="M 121.70541297351154 60.000012172511695 A 61.66666666666667 61.66666666666667 0 0 0 106.81917375398733 61.814100038445"
-          stroke="#336790"
+          size="4.03"
+          d="M 121.6666666666666 60 A 61.66666666666667 61.66666666666667 0 0 0 106.21823053428429 61.96638526999752"
+          stroke="#663399"
           fill="none"
           stroke-width="12">
         </path>
