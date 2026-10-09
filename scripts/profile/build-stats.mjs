@@ -77,58 +77,67 @@ export const render = ({ calendar, prs, repos }, p) => {
   const langs = aggregateLanguages(repos, 5);
   const inner = WIDTH - PAD * 2;
 
+  // Sizes are set for phones, where the 840-wide card shows at under half size.
+  const caption = text("In the last year", { x: PAD, y: 44, size: 22, font: "regular", fill: p.muted });
+
   // Row 1: four equal cells, numbers at one size.
   const cellW = inner / 4;
   const cells = [
     { n: fmt(calendar.total), label: "contributions" },
     { n: fmt(current), unit: current === 1 ? "day" : "days", label: "current streak" },
     { n: fmt(longest), unit: longest === 1 ? "day" : "days", label: "longest streak" },
-    { n: fmt(prs), label: "pull requests merged" },
+    { n: fmt(prs), label: "PRs merged" },
   ].map((c, i) => {
-    const x = PAD + i * cellW + (i ? 20 : 0);
-    const nw = textWidth(c.n, 30, "display");
+    const x = PAD + i * cellW + (i ? 16 : 0);
+    const nw = textWidth(c.n, 34, "display");
     return (
-      (i ? line({ x1: PAD + i * cellW + 0.5, y1: 28, x2: PAD + i * cellW + 0.5, y2: 92, stroke: p.border }) : "") +
-      text(c.n, { x, y: 62, size: 30, font: "display", fill: p.fg, max: cellW - 28 - (c.unit ? 6 + textWidth(c.unit, 16, "regular") : 0) }) +
-      (c.unit ? text(c.unit, { x: x + nw + 6, y: 62, size: 16, font: "regular", fill: p.muted }) : "") +
-      text(c.label, { x, y: 88, size: 16, font: "regular", fill: p.muted, max: cellW - 28 })
+      (i ? line({ x1: PAD + i * cellW + 0.5, y1: 66, x2: PAD + i * cellW + 0.5, y2: 132, stroke: p.border }) : "") +
+      text(c.n, { x, y: 100, size: 34, font: "display", fill: p.fg, max: cellW - 20 - (c.unit ? 6 + textWidth(c.unit, 20, "regular") : 0) }) +
+      (c.unit ? text(c.unit, { x: x + nw + 6, y: 100, size: 20, font: "regular", fill: p.muted }) : "") +
+      text(c.label, { x, y: 130, size: 22, font: "regular", fill: p.muted, max: cellW - 20 })
     );
   }).join("");
 
   // Row 2: languages as one bar plus a legend. The year itself is drawn by the snake below.
-  const barY = 124;
+  // Gaps between segments and outlined swatches keep the light greens distinguishable.
+  const barY = 162;
   const swatch = [p.greens[3], p.greens[2], p.greens[1], p.greens[0], p.muted, p.border];
   let bx = PAD;
   const segments = langs.map((l, i) => {
     const w = (l.pct / 100) * inner;
-    const seg = rect({ x: +bx.toFixed(2), y: barY, w: +w.toFixed(2), h: 10, fill: swatch[i] });
+    const seg = rect({ x: +bx.toFixed(2), y: barY, w: +Math.max(0, w - 2).toFixed(2), h: 12, fill: swatch[i] });
     bx += w;
     return seg;
   }).join("");
   const bar =
-    `<clipPath id="bar"><rect x="${PAD}" y="${barY}" width="${inner}" height="10" rx="5"/></clipPath>` +
+    `<clipPath id="bar"><rect x="${PAD}" y="${barY}" width="${inner}" height="12" rx="6"/></clipPath>` +
     `<g clip-path="url(#bar)">${segments}</g>`;
 
+  // Legend items flow left to right and wrap onto a new row when the next one won't fit.
   let lx = PAD;
-  const legendY = barY + 38;
+  let ly = barY + 50;
   const legend = langs.map((l, i) => {
     const label = `${l.name} ${l.pct}%`;
+    const w = 24 + textWidth(label, 21, "semibold");
+    if (lx > PAD && lx + w > WIDTH - PAD) {
+      lx = PAD;
+      ly += 36;
+    }
     const item =
-      rect({ x: lx, y: legendY - 11, w: 11, h: 11, fill: swatch[i], r: 2 }) +
-      text(label, { x: lx + 17, y: legendY, size: 15, font: "semibold", fill: p.fg });
-    lx += 17 + textWidth(label, 15, "semibold") + 22;
+      `<rect x="${lx + 0.5}" y="${ly - 15.5}" width="15" height="15" rx="3" fill="${swatch[i]}" stroke="${p.muted}"/>` +
+      text(label, { x: lx + 24, y: ly, size: 21, font: "semibold", fill: p.fg, max: WIDTH - PAD - lx - 24 });
+    lx += w + 28;
     return item;
   }).join("");
-  if (lx - 22 > WIDTH - PAD) throw new Error("language legend does not fit");
 
-  const h = legendY + 26;
+  const h = ly + 30;
   return svgDoc({
     w: WIDTH, h,
     title: `${fmt(calendar.total)} contributions in the last year, ${current}-day current streak, ${longest}-day longest streak, ${fmt(prs)} pull requests merged`,
     fonts: ["display", "regular", "semibold"],
     body:
       rect({ x: 0.5, y: 0.5, w: WIDTH - 1, h: h - 1, fill: p.subtle, stroke: p.border, r: RADIUS }) +
-      cells + bar + legend,
+      caption + cells + bar + legend,
   });
 };
 

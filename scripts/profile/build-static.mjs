@@ -17,7 +17,7 @@ const seeded = (seed) => () => {
 };
 
 export const header = (p) => {
-  const h = 200;
+  const h = 220;
   const cols = 13;
   const rows = 7;
   const cell = 13;
@@ -41,8 +41,9 @@ export const header = (p) => {
     w: WIDTH, h, title: "Lyle Lague, full-stack developer in Iloilo, Philippines", fonts: ["display", "regular"],
     body:
       panel(p, h) +
-      text("Lyle Lague", { x: 32, y: 104, size: 60, font: "display", fill: p.fg, max: textMax }) +
-      text("Full-stack developer in Iloilo, Philippines", { x: 34, y: 144, size: 21, font: "regular", fill: p.muted, max: textMax }) +
+      text("Lyle Lague", { x: 32, y: 100, size: 64, font: "display", fill: p.fg, max: textMax }) +
+      text("Full-stack developer", { x: 34, y: 148, size: 26, font: "regular", fill: p.muted, max: textMax }) +
+      text("Iloilo, Philippines", { x: 34, y: 182, size: 26, font: "regular", fill: p.muted, max: textMax }) +
       cells,
   });
 };
@@ -54,17 +55,20 @@ const SERVICES = [
   { icon: "trophy-24", name: "Event tabulation systems", desc: "Scoring and results for pageants and competitions", stack: "React, Supabase" },
 ];
 
+// Type sizes are set for phones: an 840-wide SVG shows at under half size there.
 export const services = (p) => {
-  const row = 92;
+  const row = 128;
   const h = SERVICES.length * row;
+  const tx = 76;
+  const max = WIDTH - PAD - tx;
   const body = SERVICES.map((s, i) => {
     const y = i * row;
     return (
       (i ? line({ x1: PAD, y1: y + 0.5, x2: WIDTH - PAD, y2: y + 0.5, stroke: p.border }) : "") +
-      icon(s.icon, { x: PAD, y: y + 30, size: 24, fill: p.greens[2] }) +
-      text(s.name, { x: 64, y: y + 41, size: 22, font: "semibold", fill: p.fg, max: 420 }) +
-      text(s.desc, { x: 64, y: y + 68, size: 17, font: "regular", fill: p.muted, max: 440 }) +
-      text(s.stack, { x: WIDTH - PAD, y: y + 51, size: 16, font: "semibold", fill: p.muted, anchor: "end", max: 260 })
+      icon(s.icon, { x: PAD, y: y + 24, size: 32, fill: p.greens[2] }) +
+      text(s.name, { x: tx, y: y + 48, size: 28, font: "semibold", fill: p.fg, max }) +
+      text(s.desc, { x: tx, y: y + 80, size: 22, font: "regular", fill: p.muted, max }) +
+      text(s.stack, { x: tx, y: y + 110, size: 20, font: "semibold", fill: p.greens[3], max })
     );
   }).join("");
   return svgDoc({
@@ -77,6 +81,7 @@ const STACK = [
   {
     title: "At AI2Aim, on AWS",
     items: [["typescript", "TypeScript"], ["express", "Express"], ["sequelize", "Sequelize"], ["postgresql", "PostgreSQL"], ["react", "React"], ["nextdotjs", "Next.js"]],
+    then: { title: "Day to day", items: [["claude", "Claude Code"]], note: "Anthropic, OpenAI and Google models" },
   },
   {
     title: "Freelance",
@@ -87,42 +92,49 @@ const STACK = [
 export const stack = (p) => {
   const colW = (WIDTH - PAD * 2 - PAD) / 2;
   const subW = colW / 2;
-  const rowH = 40;
-  const top = 64;
-  const rows = Math.max(...STACK.map((c) => Math.ceil(c.items.length / 2)));
-  const footerY = top + rows * rowH + 12;
-  const h = footerY + 64;
+  const rowH = 48;
+  const headH = 52;
 
+  // One titled group: a heading, items in two sub-columns, then an optional plain note.
+  const group = (g, x0, y0) => {
+    let out = text(g.title, { x: x0, y: y0 + 28, size: 22, font: "semibold", fill: p.muted, max: colW });
+    g.items.forEach(([slug, name], i) => {
+      const x = x0 + (i % 2) * subW;
+      const y = y0 + headH + Math.floor(i / 2) * rowH;
+      out += icon(slug, { x, y, size: 22, fill: p.fg }) + text(name, { x: x + 32, y: y + 18, size: 22, font: "regular", fill: p.fg, max: subW - 36 });
+    });
+    let bottom = y0 + headH + Math.ceil(g.items.length / 2) * rowH;
+    if (g.note) {
+      out += text(g.note, { x: x0, y: bottom + 12, size: 20, font: "regular", fill: p.muted, max: colW });
+      bottom += 32;
+    }
+    return { out, bottom };
+  };
+
+  let h = 0;
   const columns = STACK.map((col, ci) => {
     const x0 = PAD + ci * (colW + PAD);
-    const items = col.items.map(([slug, name], i) => {
-      const x = x0 + (i % 2) * subW;
-      const y = top + Math.floor(i / 2) * rowH;
-      return icon(slug, { x, y, size: 20, fill: p.fg }) + text(name, { x: x + 30, y: y + 16, size: 18, font: "regular", fill: p.fg, max: subW - 38 });
-    }).join("");
-    return text(col.title, { x: x0, y: 40, size: 17, font: "semibold", fill: p.muted, max: colW }) + items;
+    const first = group(col, x0, PAD - 8);
+    const second = col.then ? group(col.then, x0, first.bottom + 8) : { out: "", bottom: first.bottom };
+    h = Math.max(h, second.bottom + PAD);
+    return first.out + second.out;
   }).join("");
 
-  const divider = line({ x1: WIDTH / 2 + 0.5, y1: PAD, x2: WIDTH / 2 + 0.5, y2: footerY - 12, stroke: p.border });
-  const footer =
-    line({ x1: PAD, y1: footerY + 0.5, x2: WIDTH - PAD, y2: footerY + 0.5, stroke: p.border }) +
-    icon("claude", { x: PAD, y: footerY + 22, size: 20, fill: p.fg }) +
-    text("Claude Code, with models from Anthropic, OpenAI and Google", { x: PAD + 30, y: footerY + 38, size: 17, font: "regular", fill: p.fg, max: WIDTH - PAD * 2 - 30 });
-
+  const divider = line({ x1: WIDTH / 2 + 0.5, y1: PAD, x2: WIDTH / 2 + 0.5, y2: h - PAD, stroke: p.border });
   return svgDoc({
     w: WIDTH, h, title: "Tech stack at AI2Aim and for freelance work", fonts: ["semibold", "regular"],
-    body: panel(p, h) + columns + divider + footer,
+    body: panel(p, h) + columns + divider,
   });
 };
 
 const STEPS = ["Brief", "Plan", "Build", "Test", "Launch", "Support"];
 
 export const workflow = (p) => {
-  const h = 184;
-  const nodeW = 108;
-  const nodeH = 56;
+  const h = 200;
+  const gap = 20;
+  const nodeW = (WIDTH - PAD * 2 - gap * (STEPS.length - 1)) / STEPS.length;
+  const nodeH = 64;
   const y = 28;
-  const gap = (WIDTH - PAD * 2 - STEPS.length * nodeW) / (STEPS.length - 1);
   const xs = STEPS.map((_, i) => PAD + i * (nodeW + gap));
   const mid = y + nodeH / 2;
   const arrow = (x, yy, dir) =>
@@ -132,23 +144,22 @@ export const workflow = (p) => {
 
   const nodes = STEPS.map((s, i) =>
     rect({ x: xs[i] + 0.5, y: y + 0.5, w: nodeW - 1, h: nodeH - 1, fill: p.canvas, stroke: p.border, r: RADIUS }) +
-    text(s, { x: xs[i] + nodeW / 2, y: mid + 7, size: 19, font: "semibold", fill: p.fg, anchor: "middle", max: nodeW - 16 })
+    text(s, { x: xs[i] + nodeW / 2, y: mid + 8, size: 24, font: "semibold", fill: p.fg, anchor: "middle", max: nodeW - 10 })
   ).join("");
 
   const links = xs.slice(0, -1).map((x, i) =>
-    line({ x1: x + nodeW + 4, y1: mid, x2: xs[i + 1] - 9, y2: mid, stroke: p.muted }) + arrow(xs[i + 1] - 3, mid, "right")
+    line({ x1: x + nodeW + 3, y1: mid, x2: xs[i + 1] - 8, y2: mid, stroke: p.muted }) + arrow(xs[i + 1] - 2, mid, "right")
   ).join("");
 
   // The loop back from Support to Brief: clients' feedback restarts the cycle.
-  const loopY = 142;
+  const loopY = 156;
   const fromX = xs.at(-1) + nodeW / 2;
   const toX = xs[0] + nodeW / 2;
-  const label = "feedback";
   const loop =
-    `<path d="M${fromX} ${y + nodeH} V${loopY} H${toX} V${y + nodeH + 10}" fill="none" stroke="${p.greens[2]}" stroke-width="1.5" stroke-dasharray="5 4"/>` +
+    `<path d="M${fromX} ${y + nodeH} V${loopY} H${toX} V${y + nodeH + 10}" fill="none" stroke="${p.greens[2]}" stroke-width="2" stroke-dasharray="6 5"/>` +
     arrow(toX, y + nodeH + 3, "up") +
-    rect({ x: WIDTH / 2 - 48, y: loopY - 12, w: 96, h: 24, fill: p.subtle }) +
-    text(label, { x: WIDTH / 2, y: loopY + 5, size: 16, font: "regular", fill: p.muted, anchor: "middle", max: 96 });
+    rect({ x: WIDTH / 2 - 64, y: loopY - 16, w: 128, h: 32, fill: p.subtle }) +
+    text("feedback", { x: WIDTH / 2, y: loopY + 8, size: 22, font: "regular", fill: p.muted, anchor: "middle", max: 120 });
 
   return svgDoc({
     w: WIDTH, h, title: "How a project runs: Brief, Plan, Build, Test, Launch, Support, then feedback back to Brief",
