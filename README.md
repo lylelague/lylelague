@@ -43,7 +43,7 @@ Working with me is simple. Say it once, plainly. I raise disagreement early, the
   <img alt="How a project runs: Brief, Plan, Build, Test, Launch, Support, with feedback looping back to Brief." src="./profile/workflow-light.svg">
 </picture>
 
-### On GitHub
+### On GitHub in the last year
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./profile/stats-dark.svg">

@@ -68,7 +68,7 @@ export const services = (p) => {
       icon(s.icon, { x: PAD, y: y + 24, size: 32, fill: p.greens[2] }) +
       text(s.name, { x: tx, y: y + 48, size: 28, font: "semibold", fill: p.fg, max }) +
       text(s.desc, { x: tx, y: y + 80, size: 22, font: "regular", fill: p.muted, max }) +
-      text(s.stack, { x: tx, y: y + 110, size: 20, font: "semibold", fill: p.greens[3], max })
+      text(s.stack, { x: tx, y: y + 110, size: 20, font: "semibold", fill: p.muted, max })
     );
   }).join("");
   return svgDoc({
@@ -131,7 +131,7 @@ const STEPS = ["Brief", "Plan", "Build", "Test", "Launch", "Support"];
 
 export const workflow = (p) => {
   const h = 200;
-  const gap = 20;
+  const gap = 36;
   const nodeW = (WIDTH - PAD * 2 - gap * (STEPS.length - 1)) / STEPS.length;
   const nodeH = 64;
   const y = 28;
@@ -144,7 +144,7 @@ export const workflow = (p) => {
 
   const nodes = STEPS.map((s, i) =>
     rect({ x: xs[i] + 0.5, y: y + 0.5, w: nodeW - 1, h: nodeH - 1, fill: p.canvas, stroke: p.border, r: RADIUS }) +
-    text(s, { x: xs[i] + nodeW / 2, y: mid + 8, size: 24, font: "semibold", fill: p.fg, anchor: "middle", max: nodeW - 10 })
+    text(s, { x: xs[i] + nodeW / 2, y: mid + 8, size: 22, font: "semibold", fill: p.fg, anchor: "middle", max: nodeW - 10 })
   ).join("");
 
   const links = xs.slice(0, -1).map((x, i) =>

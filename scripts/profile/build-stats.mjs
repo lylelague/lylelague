@@ -78,8 +78,7 @@ export const render = ({ calendar, prs, repos }, p) => {
   const inner = WIDTH - PAD * 2;
 
   // Sizes are set for phones, where the 840-wide card shows at under half size.
-  const caption = text("In the last year", { x: PAD, y: 44, size: 22, font: "regular", fill: p.muted });
-
+  // The period ("in the last year") lives in the README heading above the card.
   // Row 1: four equal cells, numbers at one size.
   const cellW = inner / 4;
   const cells = [
@@ -91,16 +90,16 @@ export const render = ({ calendar, prs, repos }, p) => {
     const x = PAD + i * cellW + (i ? 16 : 0);
     const nw = textWidth(c.n, 34, "display");
     return (
-      (i ? line({ x1: PAD + i * cellW + 0.5, y1: 66, x2: PAD + i * cellW + 0.5, y2: 132, stroke: p.border }) : "") +
-      text(c.n, { x, y: 100, size: 34, font: "display", fill: p.fg, max: cellW - 20 - (c.unit ? 6 + textWidth(c.unit, 20, "regular") : 0) }) +
-      (c.unit ? text(c.unit, { x: x + nw + 6, y: 100, size: 20, font: "regular", fill: p.muted }) : "") +
-      text(c.label, { x, y: 130, size: 22, font: "regular", fill: p.muted, max: cellW - 20 })
+      (i ? line({ x1: PAD + i * cellW + 0.5, y1: 28, x2: PAD + i * cellW + 0.5, y2: 94, stroke: p.border }) : "") +
+      text(c.n, { x, y: 62, size: 34, font: "display", fill: p.fg, max: cellW - 20 - (c.unit ? 6 + textWidth(c.unit, 20, "regular") : 0) }) +
+      (c.unit ? text(c.unit, { x: x + nw + 6, y: 62, size: 20, font: "regular", fill: p.muted }) : "") +
+      text(c.label, { x, y: 92, size: 22, font: "regular", fill: p.muted, max: cellW - 20 })
     );
   }).join("");
 
   // Row 2: languages as one bar plus a legend. The year itself is drawn by the snake below.
   // Gaps between segments and outlined swatches keep the light greens distinguishable.
-  const barY = 162;
+  const barY = 124;
   const swatch = [p.greens[3], p.greens[2], p.greens[1], p.greens[0], p.muted, p.border];
   let bx = PAD;
   const segments = langs.map((l, i) => {
@@ -137,7 +136,7 @@ export const render = ({ calendar, prs, repos }, p) => {
     fonts: ["display", "regular", "semibold"],
     body:
       rect({ x: 0.5, y: 0.5, w: WIDTH - 1, h: h - 1, fill: p.subtle, stroke: p.border, r: RADIUS }) +
-      caption + cells + bar + legend,
+      cells + bar + legend,
   });
 };
 
