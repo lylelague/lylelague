@@ -47,9 +47,3 @@ export const aggregateLanguages = (repos, top = 5) => {
   const other = sorted.slice(top).reduce((s, [, n]) => s + n, 0);
   return percentages(other ? [...head, ["Other", other]] : head);
 };
-
-// GitHub shades a day by quarters of the busiest day: 0 is empty, then 1-4.
-export const levels = (counts) => {
-  const max = Math.max(0, ...counts);
-  return counts.map((c) => (c <= 0 || !max ? 0 : Math.min(4, Math.max(1, Math.ceil((c * 4) / max)))));
-};

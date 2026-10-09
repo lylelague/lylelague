@@ -4,7 +4,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 
-import { aggregateLanguages, levels, streaks } from "./stats-lib.mjs";
+import { aggregateLanguages, streaks } from "./stats-lib.mjs";
 import { line, rect, svgDoc, text, textWidth } from "./svg.mjs";
 import { PAD, RADIUS, THEMES, WIDTH } from "./theme.mjs";
 
@@ -89,29 +89,14 @@ export const render = ({ calendar, prs, repos }, p) => {
     const nw = textWidth(c.n, 30, "display");
     return (
       (i ? line({ x1: PAD + i * cellW + 0.5, y1: 28, x2: PAD + i * cellW + 0.5, y2: 92, stroke: p.border }) : "") +
-      text(c.n, { x, y: 62, size: 30, font: "display", fill: p.fg, max: cellW - 28 - (c.unit ? textWidth(` ${c.unit}`, 16, "regular") : 0) }) +
-      (c.unit ? text(` ${c.unit}`, { x: x + nw, y: 62, size: 16, font: "regular", fill: p.muted }) : "") +
+      text(c.n, { x, y: 62, size: 30, font: "display", fill: p.fg, max: cellW - 28 - (c.unit ? 6 + textWidth(c.unit, 16, "regular") : 0) }) +
+      (c.unit ? text(c.unit, { x: x + nw + 6, y: 62, size: 16, font: "regular", fill: p.muted }) : "") +
       text(c.label, { x, y: 88, size: 16, font: "regular", fill: p.muted, max: cellW - 28 })
     );
   }).join("");
 
-  // Row 2: the year as a mini contribution graph, shaded the way GitHub shades it.
-  const shade = levels(days.map((d) => d.count));
-  const colors = [p.empty, ...p.greens];
-  const step = inner / calendar.weeks.length;
-  const cell = Math.max(4, step - 3);
-  const gy = 140;
-  let k = 0;
-  const graph = calendar.weeks.map((week, wi) => {
-    const offset = wi === 0 ? 7 - week.length : 0;
-    return week.map((_, di) =>
-      rect({ x: +(PAD + wi * step).toFixed(2), y: +(gy + (di + offset) * step).toFixed(2), w: +cell.toFixed(2), h: +cell.toFixed(2), fill: colors[shade[k++]], r: 2 })
-    ).join("");
-  }).join("");
-  const graphBottom = gy + 7 * step;
-
-  // Row 3: languages as one bar plus a legend.
-  const barY = graphBottom + 26;
+  // Row 2: languages as one bar plus a legend. The year itself is drawn by the snake below.
+  const barY = 124;
   const swatch = [p.greens[3], p.greens[2], p.greens[1], p.greens[0], p.muted, p.border];
   let bx = PAD;
   const segments = langs.map((l, i) => {
@@ -143,9 +128,7 @@ export const render = ({ calendar, prs, repos }, p) => {
     fonts: ["display", "regular", "semibold"],
     body:
       rect({ x: 0.5, y: 0.5, w: WIDTH - 1, h: h - 1, fill: p.subtle, stroke: p.border, r: RADIUS }) +
-      cells +
-      text("Last 12 months", { x: PAD, y: 126, size: 15, font: "regular", fill: p.muted }) +
-      graph + bar + legend,
+      cells + bar + legend,
   });
 };
 

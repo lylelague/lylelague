@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { aggregateLanguages, levels, streaks } from "./stats-lib.mjs";
+import { aggregateLanguages, streaks } from "./stats-lib.mjs";
 
 const run = (counts, end = "2026-10-10") => {
   const last = new Date(`${end}T00:00:00Z`);
@@ -49,9 +49,4 @@ test("aggregateLanguages omits Other when everything fits", () => {
   const langs = aggregateLanguages([{ fork: false, languages: { TypeScript: 1, PHP: 1, CSS: 1 } }], 5);
   assert.deepEqual(langs.map((l) => l.name).sort(), ["CSS", "PHP", "TypeScript"]);
   assert.equal(langs.reduce((s, l) => s + l.pct, 0), 100);
-});
-
-test("levels follow GitHub's quarter-of-max shading", () => {
-  assert.deepEqual(levels([0, 1, 25, 26, 50, 51, 75, 76, 100]), [0, 1, 1, 2, 2, 3, 3, 4, 4]);
-  assert.deepEqual(levels([0, 0]), [0, 0]);
 });
