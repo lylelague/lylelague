@@ -1,105 +1,34 @@
 <!--
-  ============================================================================
-  PROFILE README  ·  github.com/lylelague   ·   variant: DRACULA (mashup)
-  ----------------------------------------------------------------------------
-  A curated mashup of the best ideas from five community profiles:
-    · supuna97       -> skillicons grid + komarev profile-view counter
-    · walidbosso     -> GitHub alert callouts + profile-summary-cards + quote
-    · Ahtisham-1214  -> multi-card analytics depth (repos/commit/productive)
-    · jattu8602      -> for-the-badge consistency + one cohesive accent
-    · Hunterdii      -> "personality as code" (TS self-portrait) + greeting
-  Theme     : Dracula — bg #282a36 · purple #bd93f9 · pink #ff79c6 ·
-              cyan #8be9fd · green #50fa7b · fg #f8f8f2
-  Snake     : github-snake-dracula.svg on the `output` branch.
-  Activity  : github-activity-graph-dracula.svg on the `output` branch.
-  Top langs : profile/top-langs.svg, committed by grs.yml (incl. private repos).
-  PR card   : card_width=307 + line_height=34 make it 307x181, the donut's 1.70
-              aspect, so the two share a row evenly.
-  ============================================================================
+  Profile README for github.com/lylelague.
+
+  Snake: github-contribution-grid-snake{-dark}.svg on the `output` branch, built by
+  .github/workflows/snake.yml. The <picture> swaps it to match the viewer's GitHub theme.
+  grs.yml still builds profile/*.svg cards; they are no longer shown here.
 -->
 
-<div align="center">
+I'm Lyle, a full-stack developer at AI2Aim, working remotely from Iloilo in the Philippines (UTC+8).
 
-<img alt="Lyle Lague" src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1000&color=BD93F9&center=true&vCenter=true&width=780&height=48&lines=Kumusta!+I'm+Lyle+Lague;Full-Stack+Developer+%40+AI2Aim;APIs%2C+apps%2C+and+Flutter+clients+in+the+field;Ships+with+AI+%E2%80%94+then+writes+the+evals+that+break+it" />
+I'm part of a Canada-based team building an enterprise HR platform. I work on the Express and PostgreSQL API and on the React app that runs on it. The codebase is past 600,000 lines. I write my part with AI help from start to finish, then write the evals that try to break what the AI helped me ship.
 
-<br>
+Outside AI2Aim I take freelance work, building web and mobile apps with React, Next.js, Laravel, React Native and Supabase.
 
-![Profile views](https://komarev.com/ghpvc/?username=lylelague&label=Profile%20views&color=bd93f9&style=flat)
-&nbsp;
-[![GitHub](https://img.shields.io/badge/GitHub-lylelague-bd93f9?style=for-the-badge&logo=github&logoColor=282a36)](https://github.com/lylelague)
-[![Email](https://img.shields.io/badge/Email-lyle.lague-ff79c6?style=for-the-badge&logo=gmail&logoColor=282a36)](mailto:lyle.lague@ai2aim.ai)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Lyle_Lague-8be9fd?style=for-the-badge&logo=linkedin&logoColor=282a36)](https://www.linkedin.com/in/lyle-lague-244148387)
-[![X](https://img.shields.io/badge/X-@lylengqt-50fa7b?style=for-the-badge&logo=x&logoColor=282a36)](https://x.com/lylengqt)
+Working with me is simple. Say it once, plainly. I raise disagreement early, then commit, and I leave the branch cleaner than I found it.
 
-</div>
+### What I'm working on
 
-> [!NOTE]
-> Full-stack developer at **AI2Aim**, remote from **Iloilo, Philippines (UTC+8)**. I ship a Canada-based enterprise HR platform across every layer — backend, the React app that consumes it, and Flutter clients for the field — on a 600K+ line codebase, AI-assisted end to end.
+- Enterprise HR at scale
+- Offline-first mobile apps that keep working when the signal drops
+- Adversarial evals that try to break LLM features
 
-> [!TIP]
-> Best way to work with me: say it once, plainly. I flag disagreement early, then commit — and leave the branch cleaner than I found it.
+### What I use
 
-## 🧬 &nbsp; Tech
+I write TypeScript and SQL, plus PHP for Laravel. At AI2Aim that means Express, Sequelize and PostgreSQL on AWS, with React 19 and Next.js on the web. Day to day I work in Claude Code and use models from Anthropic, OpenAI and Google.
 
-<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lylelague/lylelague/output/github-contribution-grid-snake-dark.svg">
+  <img alt="A snake moving across my GitHub contribution graph" src="https://raw.githubusercontent.com/lylelague/lylelague/output/github-contribution-grid-snake.svg">
+</picture>
 
-![skills](https://skillicons.dev/icons?i=ts,js,react,nextjs,nodejs,express,postgres,flutter,dart,supabase,aws,git,jest&theme=dark&perline=13)
+### Get in touch
 
-</div>
-
-## 👾 &nbsp; lyle.ts
-
-```ts
-const lyle: FullStackDeveloper = {
-  name: "Lyle Lague",
-  role: "Full-Stack Developer @ AI2Aim",
-  location: "Iloilo, PH",                 // UTC+8 · remote
-  writes: ["TypeScript", "Dart", "SQL"],
-  stack: {
-    backend:  ["Express", "Sequelize", "PostgreSQL", "AWS"],
-    frontend: ["React 19", "Next.js"],
-    mobile:   ["Flutter", "Supabase"],
-    ai:       ["Anthropic", "OpenAI", "Google", "MCP (Serena)"],
-  },
-  shipsWith: "Claude Code",
-  currently: "enterprise HR at scale · offline-first field apps · adversarial LLM evals",
-  motto: "say it once, plainly — return 0 on merge",
-};
-```
-
-## 📊 &nbsp; Analytics
-
-<div align="center">
-
-<img height="165" alt="GitHub stats" src="https://github-stats-extended.vercel.app/api?username=lylelague&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&rank_icon=github&theme=dracula" />
-<img height="165" alt="Streak" src="https://streak-stats.demolab.com?user=lylelague&theme=dracula&hide_border=true" />
-
-<img width="49%" alt="Top languages used" src="./profile/top-langs.svg" />
-<img width="49%" alt="Pull requests" src="https://github-stats-extended.vercel.app/api?username=lylelague&hide=stars,commits,prs,issues,contribs&show=prs_authored,prs_merged,prs_merged_percentage&show_icons=true&hide_rank=true&card_width=307&line_height=34&theme=dracula&hide_border=true&custom_title=Pull%20Requests" />
-
-<img width="49%" alt="Productive time" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=lylelague&theme=dracula&utcOffset=8" />
-<img width="49%" alt="Stats summary" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=lylelague&theme=dracula" />
-
-<img alt="Activity graph" src="https://raw.githubusercontent.com/lylelague/lylelague/output/github-activity-graph-dracula.svg" />
-
-</div>
-
-## 🐍 &nbsp; Contribution snake
-
-<div align="center">
-
-<img alt="Contribution snake" src="https://raw.githubusercontent.com/lylelague/lylelague/output/github-snake-dracula.svg" />
-
-</div>
-
-## 💬 &nbsp; Dev quote
-
-<div align="center">
-
-<img alt="Quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dracula" />
-
-<br><br>
-
-<sub>Thanks for stopping by — <a href="mailto:lyle.lague@ai2aim.ai">lyle.lague@ai2aim.ai</a></sub>
-
-</div>
+Email me at [lyle.lague@ai2aim.ai](mailto:lyle.lague@ai2aim.ai), or find me on [LinkedIn](https://www.linkedin.com/in/lyle-lague-244148387) and [X](https://x.com/lylengqt).
