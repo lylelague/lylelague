@@ -15,40 +15,35 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Generate stats card
-        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true
-          path: profile/stats.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          node-version: 20
 
-      # Every repo with code on this account is private, so a GITHUB_TOKEN card
-      # would render empty. STATS_TOKEN: fine-grained PAT, resource owner
-      # lylelague, All repositories, Metadata read-only.
+      # Every repo with code on this account is private, so GITHUB_TOKEN would see
+      # almost nothing. STATS_TOKEN: fine-grained PAT, resource owner lylelague,
+      # All repositories, Metadata read-only.
       - name: Require STATS_TOKEN
         env:
           STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
         run: |
           if [ -z "$STATS_TOKEN" ]; then
-            echo "::error title=STATS_TOKEN not set::Add a fine-grained PAT (All repositories, Metadata read-only) as the STATS_TOKEN repo secret so the top-languages card can read private repos."
+            echo "::error title=STATS_TOKEN not set::Add a fine-grained PAT (All repositories, Metadata read-only) as the STATS_TOKEN repo secret so the stats card can read private repos."
             exit 1
           fi
 
-      # card_width=315 makes the donut 365x215: the same 1.7 aspect as the
-      # summary cards it sits beside in the README.
-      - name: Generate top languages card (includes private repos)
-        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
-        with:
-          card: top-langs
-          options: username=${{ github.repository_owner }}&layout=donut&langs_count=5&card_width=315&theme=dracula&hide_border=true&custom_title=Top%20Languages%20Used
-          path: profile/top-langs.svg
-          token: ${{ secrets.STATS_TOKEN }}
+      - name: Test the card builders
+        run: node --test "scripts/profile/*.test.mjs"
+
+      # Fails without writing if any GitHub call fails, so the last good card stays.
+      - name: Build stats card
+        env:
+          GH_TOKEN: ${{ secrets.STATS_TOKEN }}
+        run: node scripts/profile/build-stats.mjs
 
       - name: Commit cards
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile/*.svg
+          git add profile/stats-*.svg
           git commit -m "Update README cards" || exit 0
           git push

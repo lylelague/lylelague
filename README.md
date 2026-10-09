@@ -1,10 +1,18 @@
 <!--
   Profile README for github.com/lylelague.
 
-  Snake: github-contribution-grid-snake{-dark}.svg on the `output` branch, built by
-  .github/workflows/snake.yml. The <picture> swaps it to match the viewer's GitHub theme.
-  grs.yml still builds profile/*.svg cards; they are no longer shown here.
+  Every image is drawn by scripts/profile/ in GitHub's own colors, in a light and a dark
+  version; the <picture> elements pick the one matching the viewer's theme.
+    node scripts/profile/build-static.mjs   header, services, stack, workflow (rerun after copy edits)
+    node scripts/profile/build-stats.mjs    stats, rebuilt daily by .github/workflows/grs.yml
+  Snake: github-contribution-grid-snake{-dark}.svg on the `output` branch, from snake.yml.
 -->
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./profile/header-dark.svg">
+  <img alt="Lyle Lague, full-stack developer in Iloilo, Philippines" src="./profile/header-light.svg">
+</picture>
+<br><br>
 
 I'm Lyle, a full-stack developer at AI2Aim, working remotely from Iloilo in the Philippines (UTC+8).
 
@@ -14,15 +22,33 @@ Outside AI2Aim I take freelance work, building web and mobile apps with React, N
 
 Working with me is simple. Say it once, plainly. I raise disagreement early, then commit, and I leave the branch cleaner than I found it.
 
-### What I'm working on
+### What I can build for you
 
-- Enterprise HR at scale
-- Offline-first mobile apps that keep working when the signal drops
-- Adversarial evals that try to break LLM features
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./profile/services-dark.svg">
+  <img alt="Services. Web apps: dashboards, portals and records systems, with Next.js, Laravel and Supabase. Mobile apps: Android and iOS apps for teams and customers, with React Native, Expo and Kotlin. Backend and APIs: APIs, databases, auth and integrations, with Laravel, Express and PostgreSQL. Event tabulation systems: scoring and results for pageants and competitions, with React and Supabase." src="./profile/services-light.svg">
+</picture>
 
 ### What I use
 
-I write TypeScript and SQL, plus PHP for Laravel. At AI2Aim that means Express, Sequelize and PostgreSQL on AWS, with React 19 and Next.js on the web. Day to day I work in Claude Code and use models from Anthropic, OpenAI and Google.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./profile/stack-dark.svg">
+  <img alt="Tech stack. At AI2Aim, on AWS: TypeScript, Express, Sequelize, PostgreSQL, React, Next.js. Freelance: React, Next.js, Laravel, Inertia, Vue, React Native, Expo, Supabase, Kotlin, PHP. Day to day: Claude Code, with models from Anthropic, OpenAI and Google." src="./profile/stack-light.svg">
+</picture>
+
+### How a project runs
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./profile/workflow-dark.svg">
+  <img alt="How a project runs: Brief, Plan, Build, Test, Launch, Support, with feedback looping back to Brief." src="./profile/workflow-light.svg">
+</picture>
+
+### On GitHub in the last year
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./profile/stats-dark.svg">
+  <img alt="GitHub stats for the last 12 months: total contributions, current and longest streak, pull requests merged and top languages. Updated daily." src="./profile/stats-light.svg">
+</picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lylelague/lylelague/output/github-contribution-grid-snake-dark.svg">
@@ -31,4 +57,4 @@ I write TypeScript and SQL, plus PHP for Laravel. At AI2Aim that means Express, 
 
 ### Get in touch
 
-Email me at [lyle.lague@ai2aim.ai](mailto:lyle.lague@ai2aim.ai), or find me on [LinkedIn](https://www.linkedin.com/in/lyle-lague-244148387) and [X](https://x.com/lylengqt).
+Email me at [lyletacsagonlague@gmail.com](mailto:lyletacsagonlague@gmail.com), or find me on [LinkedIn](https://www.linkedin.com/in/lyle-lague-244148387) and [X](https://x.com/lylengqt).
