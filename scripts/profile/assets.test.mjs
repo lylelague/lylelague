@@ -57,3 +57,9 @@ test("validate rejects partial data", () => {
   assert.throws(() => validate({ ...fixture, prs: undefined }), /merged PR count/);
   assert.doesNotThrow(() => validate(fixture));
 });
+
+test("validate refuses a merged-PR count that went down", () => {
+  assert.throws(() => validate({ ...fixture, prs: 4 }, { prs: 765 }), /went down from 765 to 4/);
+  assert.doesNotThrow(() => validate({ ...fixture, prs: 765 }, { prs: 765 }));
+  assert.doesNotThrow(() => validate(fixture, {}));
+});

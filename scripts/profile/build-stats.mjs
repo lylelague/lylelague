@@ -60,12 +60,26 @@ const fetchAll = async () => {
   return { calendar, prs, repos };
 };
 
-export const validate = ({ calendar, prs, repos }) => {
+// Merged PRs only ever go up, so a drop means the token lost sight of private or org repos.
+export const validate = ({ calendar, prs, repos }, previous = {}) => {
   const days = calendar?.weeks?.flat() ?? [];
   if (days.length < 300) throw new Error(`calendar has only ${days.length} days`);
   if (!Number.isInteger(calendar.total) || calendar.total < 0) throw new Error("calendar total is invalid");
   if (!Number.isInteger(prs) || prs < 0) throw new Error("merged PR count is invalid");
+  if (previous.prs !== undefined && prs < previous.prs)
+    throw new Error(`merged PRs went down from ${previous.prs} to ${prs}; the token probably can't see private or org repos`);
   if (!repos?.length) throw new Error("no repositories returned");
+};
+
+// The numbers the committed card shows, read back from its <title>.
+const readPrevious = () => {
+  try {
+    const svg = readFileSync(new URL("../../profile/stats-light.svg", import.meta.url), "utf8");
+    const prs = svg.match(/([\d,]+) pull requests merged/)?.[1];
+    return prs ? { prs: Number(prs.replace(/,/g, "")) } : {};
+  } catch {
+    return {};
+  }
 };
 
 const fmt = (n) => n.toLocaleString("en-US");
@@ -145,7 +159,7 @@ const main = async () => {
   const flag = (name) => (args.includes(name) ? args[args.indexOf(name) + 1] : undefined);
 
   const payload = flag("--fixture") ? JSON.parse(readFileSync(flag("--fixture"), "utf8")) : await fetchAll();
-  validate(payload);
+  validate(payload, flag("--fixture") ? {} : readPrevious());
   if (flag("--save-fixture")) writeFileSync(flag("--save-fixture"), JSON.stringify(payload) + "\n");
 
   // Render both before writing either, so a failure never leaves the pair out of sync.
