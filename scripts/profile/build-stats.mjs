@@ -1,6 +1,7 @@
 // Builds the stats SVG from live GitHub data. Run daily by .github/workflows/grs.yml.
 //   GH_TOKEN=... node scripts/profile/build-stats.mjs [--fixture file.json] [--save-fixture file.json]
 // Any fetch or validation failure exits non-zero before writing, so the last good SVG stays.
+import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 
@@ -154,6 +155,11 @@ export const render = ({ calendar, prs, repos }, p) => {
   });
 };
 
+// Browsers and GitHub's CDN cache images by URL, so the README links carry a content
+// fingerprint: new numbers mean a new URL, unchanged numbers leave the README untouched.
+export const bustCache = (readme, version) =>
+  readme.replace(/(\.\/profile\/stats-(?:light|dark)\.svg)(\?v=[0-9a-f]+)?"/g, `$1?v=${version}"`);
+
 const main = async () => {
   const args = process.argv.slice(2);
   const flag = (name) => (args.includes(name) ? args[args.indexOf(name) + 1] : undefined);
@@ -165,6 +171,12 @@ const main = async () => {
   // Render both before writing either, so a failure never leaves the pair out of sync.
   const out = Object.entries(THEMES).map(([theme, palette]) => [theme, render(payload, palette)]);
   for (const [theme, svg] of out) writeFileSync(new URL(`../../profile/stats-${theme}.svg`, import.meta.url), svg);
+
+  const version = createHash("sha256").update(out.map(([, svg]) => svg).join("")).digest("hex").slice(0, 8);
+  const readmeUrl = new URL("../../README.md", import.meta.url);
+  const readme = readFileSync(readmeUrl, "utf8");
+  const stamped = bustCache(readme, version);
+  if (stamped !== readme) writeFileSync(readmeUrl, stamped);
   console.log(`stats: ${payload.calendar.total} contributions, ${payload.prs} PRs, ${payload.repos.length} repos`);
 };
 

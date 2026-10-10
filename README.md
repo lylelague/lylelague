@@ -46,8 +46,8 @@ Working with me is simple. Say it once, plainly. I raise disagreement early, the
 ### On GitHub in the last year
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./profile/stats-dark.svg">
-  <img alt="GitHub stats for the last 12 months: total contributions, current and longest streak, pull requests merged and top languages. Updated daily." src="./profile/stats-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="./profile/stats-dark.svg?v=6986ff1e">
+  <img alt="GitHub stats for the last 12 months: total contributions, current and longest streak, pull requests merged and top languages. Updated daily." src="./profile/stats-light.svg?v=6986ff1e">
 </picture>
 
 <picture>

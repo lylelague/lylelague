@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { BUILDERS } from "./build-static.mjs";
-import { render, validate } from "./build-stats.mjs";
+import { bustCache, render, validate } from "./build-stats.mjs";
 import { textWidth } from "./svg.mjs";
 import { THEMES } from "./theme.mjs";
 
@@ -62,4 +62,20 @@ test("validate refuses a merged-PR count that went down", () => {
   assert.throws(() => validate({ ...fixture, prs: 4 }, { prs: 765 }), /went down from 765 to 4/);
   assert.doesNotThrow(() => validate({ ...fixture, prs: 765 }, { prs: 765 }));
   assert.doesNotThrow(() => validate(fixture, {}));
+});
+
+test("bustCache stamps both stats links with the version and leaves other images alone", () => {
+  const readme = [
+    '<source srcset="./profile/stats-dark.svg">',
+    '<img src="./profile/stats-light.svg">',
+    '<img src="./profile/header-light.svg">',
+  ].join("\n");
+  const once = bustCache(readme, "abc123");
+  assert.match(once, /stats-dark\.svg\?v=abc123"/);
+  assert.match(once, /stats-light\.svg\?v=abc123"/);
+  assert.match(once, /header-light\.svg"/);
+  const again = bustCache(once, "def456");
+  assert.match(again, /stats-dark\.svg\?v=def456"/);
+  assert.doesNotMatch(again, /abc123/);
+  assert.equal(bustCache(again, "def456"), again);
 });
